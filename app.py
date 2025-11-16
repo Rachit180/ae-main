@@ -60,8 +60,8 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 recipients = {
    
 
-"ojas.mittal@iongroup.com": ("Ojas Mittal", "ION"),
-"shantanu.bhardwaj@iongroup.com": ("Shantanu Bhardwaj", "ION"),
+"markinson2425@gmail.com": ("Ojas Mittal", "ION"),
+"markinsoncarter230@gmail.com": ("Shantanu Bhardwaj", "ION"),
 }
 
 # Email Body (HTML)
@@ -273,7 +273,7 @@ def send_emails_async():
                 })
 
             if idx < len(recipients):
-                delay_secs = random.randint(60, 70)
+                delay_secs = random.randint(600, 700)
                 logger.info(f"⏳ Waiting {delay_secs} seconds ({delay_secs//60} minutes) before next email...")
                 time.sleep(delay_secs)
 
