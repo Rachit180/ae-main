@@ -59,15 +59,7 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 # recipients mapping
 recipients = {
    
-"sonika.singh@iongroup.com": ("Sonika Singh", "ION"),
-"akanksha.kapoor@iongroup.com": ("Akanksha Kapoor", "ION"),
-"sai.gandlapalli@iongroup.com": ("Sai Gandlapalli", "ION"),
-"rashi.pandita@iongroup.com": ("Rashi Pandita", "ION"),
-"archana.singh@iongroup.com": ("Archana Singh", "ION"),
-"nitish.a.srivastava@iongroup.com": ("Nitish Srivastava", "ION"),
-"ashutosh.kala@iongroup.com": ("Ashutosh Kala", "ION"),
-"ravleen.kaur@iongroup.com": ("Ravleen Kaur", "ION"),
-"harsh.miglani@iongroup.com": ("Harsh Miglani", "ION"),
+
 "ojas.mittal@iongroup.com": ("Ojas Mittal", "ION"),
 "shantanu.bhardwaj@iongroup.com": ("Shantanu Bhardwaj", "ION"),
 }
