@@ -61,17 +61,18 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-   
-
-"markinson2425@gmail.com": ("Ojas Mittal", "ION"),
-"markinsoncarter230@gmail.com": ("Shantanu Bhardwaj", "ION"),
+"urkansal@ciena.com": ("Urvashee Kansal", "Ciena"),
+"rsingh@ciena.com": ("Ravikaran Singh", "Ciena"),
+"sdubey@ciena.com": ("Sarvesh Dubey", "Ciena"),
+"mreyaz@ciena.com": ("Mohd Reyaz", "Ciena"),
+"heenakha@ciena.com": ("Heena Khatri", "Ciena")
 }
 
 # Email Body (HTML)
 BODY_TEMPLATE = """
 <html>
 <body>
-    <p>Hello <b>{hiring_manager}</b>,</p>
+    <p>Hello {hiring_manager}</b>,</p>
 
     <p>My name is <b>Rachit Jain</b>. I am a <b>fourth-year B.Tech (Software Engineering) student</b> at
     <b>Delhi Technological University</b> (2022–2026), with a strong foundation in software development and machine learning.
