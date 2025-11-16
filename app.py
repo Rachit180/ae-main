@@ -12,6 +12,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 import threading
+import requests
 
 # Configure logging
 logging.basicConfig(
@@ -49,6 +50,8 @@ MAILGUN_SMTP_HOST = os.environ.get("MAILGUN_SMTP_HOST", "smtp.mailgun.org")
 MAILGUN_SMTP_PORT = int(os.environ.get("MAILGUN_SMTP_PORT", "587"))
 SENDER_ADDRESS = os.environ.get("SENDER_ADDRESS", MAILGUN_SMTP_LOGIN)
 RESUME_FILE = os.environ.get("RESUME_FILE", "RACHITJAIN_RESUME.pdf")
+MAILGUN_API_KEY = os.environ.get("MAILGUN_API_KEY")
+MAILGUN_DOMAIN = os.environ.get("MAILGUN_DOMAIN")
 
 # Optional API key for authentication
 API_KEY = os.environ.get("API_KEY", "")
@@ -138,9 +141,9 @@ def send_emails_async():
     sending_status["is_sending"] = True
     sending_status["results"] = []
     
-    # Validate environment variables
-    if not MAILGUN_SMTP_LOGIN or not MAILGUN_SMTP_PASSWORD:
-        error_msg = "Missing required environment variables: MAILGUN_SMTP_LOGIN and/or MAILGUN_SMTP_PASSWORD"
+    # Validate environment variables for HTTPS Mailgun API
+    if not MAILGUN_API_KEY or not MAILGUN_DOMAIN or not SENDER_ADDRESS:
+        error_msg = "Missing required environment variables for HTTPS send: MAILGUN_API_KEY, MAILGUN_DOMAIN, and/or SENDER_ADDRESS"
         logger.error(f"❌ {error_msg}")
         sending_status["results"].append({
             "status": "error",
@@ -165,104 +168,52 @@ def send_emails_async():
     resume_filename = os.path.basename(RESUME_FILE)
     logger.info(f"✅ Resume file loaded: {len(resume_bytes)} bytes")
 
-    # Try connecting with retries and different methods
-    max_retries = 3
-    server = None
-    
-    for attempt in range(1, max_retries + 1):
-        try:
-            logger.info(f"📧 Attempt {attempt}/{max_retries}: Connecting to Mailgun SMTP ({MAILGUN_SMTP_HOST}:{MAILGUN_SMTP_PORT})...")
-            
-            # Try different connection methods
-            if MAILGUN_SMTP_PORT == 465:
-                # SSL connection
-                logger.info("🔒 Using SSL connection (port 465)")
-                server = smtplib.SMTP_SSL(MAILGUN_SMTP_HOST, MAILGUN_SMTP_PORT, timeout=60)
-            elif MAILGUN_SMTP_PORT == 587:
-                # STARTTLS connection
-                logger.info("🔒 Using STARTTLS connection (port 587)")
-                server = smtplib.SMTP(MAILGUN_SMTP_HOST, MAILGUN_SMTP_PORT, timeout=60)
-                server.set_debuglevel(0)
-                server.ehlo()
-                server.starttls()
-                server.ehlo()
-            elif MAILGUN_SMTP_PORT == 2525:
-                # Alternative port with STARTTLS
-                logger.info("🔒 Using STARTTLS connection (port 2525)")
-                server = smtplib.SMTP(MAILGUN_SMTP_HOST, MAILGUN_SMTP_PORT, timeout=60)
-                server.set_debuglevel(0)
-                server.ehlo()
-                server.starttls()
-                server.ehlo()
-            else:
-                # Default connection
-                logger.info("🔒 Using default connection")
-                server = smtplib.SMTP(MAILGUN_SMTP_HOST, MAILGUN_SMTP_PORT, timeout=60)
-                server.ehlo()
-            
-            logger.info("🔑 Attempting to login...")
-            server.login(MAILGUN_SMTP_LOGIN, MAILGUN_SMTP_PASSWORD)
-            logger.info("✅ Successfully connected and authenticated to Mailgun SMTP")
-            break  # Success, exit retry loop
-            
-        except (smtplib.SMTPConnectError, smtplib.SMTPServerDisconnected, OSError, TimeoutError) as conn_err:
-            if attempt < max_retries:
-                wait_time = attempt * 5  # Exponential backoff: 5s, 10s, 15s
-                logger.warning(f"⚠️ Connection attempt {attempt} failed: {str(conn_err)}")
-                logger.info(f"⏳ Retrying in {wait_time} seconds...")
-                time.sleep(wait_time)
-                if server:
-                    try:
-                        server.quit()
-                    except:
-                        pass
-                    server = None
-            else:
-                # Try alternative port on last attempt
-                if MAILGUN_SMTP_PORT == 587:
-                    logger.info("🔄 Trying alternative port 2525...")
-                    try:
-                        server = smtplib.SMTP(MAILGUN_SMTP_HOST, 2525, timeout=60)
-                        server.ehlo()
-                        server.starttls()
-                        server.ehlo()
-                        server.login(MAILGUN_SMTP_LOGIN, MAILGUN_SMTP_PASSWORD)
-                        logger.info("✅ Successfully connected using alternative port 2525")
-                        break
-                    except Exception as alt_err:
-                        logger.error(f"❌ Alternative port also failed: {str(alt_err)}")
-                        raise conn_err
-                else:
-                    raise conn_err
-        except Exception as e:
-            logger.error(f"❌ Connection error: {str(e)}")
-            if attempt < max_retries:
-                wait_time = attempt * 5
-                logger.info(f"⏳ Retrying in {wait_time} seconds...")
-                time.sleep(wait_time)
-            else:
-                raise
-    
-    if not server:
-        raise Exception("Failed to establish SMTP connection after all retries")
-    
     try:
+        logger.info(f"🌐 Using Mailgun HTTPS API (domain={MAILGUN_DOMAIN})")
         logger.info(f"📬 Total recipients to send: {len(recipients)}")
+        api_base = f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages"
+        auth = ("api", MAILGUN_API_KEY)
         
         for idx, (recipient, (hiring_manager, company)) in enumerate(recipients.items(), start=1):
             try:
                 logger.info(f"📨 [{idx}/{len(recipients)}] Preparing email for {recipient} — {hiring_manager} @ {company}")
-                msg = build_message(SENDER_ADDRESS, recipient, hiring_manager, company, resume_bytes, resume_filename)
-                server.sendmail(SENDER_ADDRESS, recipient, msg.as_string())
-                logger.info(f"✅ [{idx}/{len(recipients)}] Successfully sent to {recipient} — {hiring_manager} @ {company}")
-                sending_status["results"].append({
-                    "status": "success",
-                    "recipient": recipient,
-                    "hiring_manager": hiring_manager,
-                    "company": company,
-                    "index": idx,
-                    "total": len(recipients)
-                })
+                subject = f"Application for SDE Fresher Role - Rachit Jain, DTU at {company}"
+                html_body = BODY_TEMPLATE.format(hiring_manager=hiring_manager, company=company)
+                
+                data = {
+                    "from": SENDER_ADDRESS,
+                    "to": recipient,
+                    "subject": subject,
+                    "html": html_body
+                }
+                
+                files = [("attachment", (resume_filename, resume_bytes, "application/pdf"))]
+                
+                response = requests.post(api_base, auth=auth, data=data, files=files, timeout=60)
+                if response.status_code >= 200 and response.status_code < 300:
+                    logger.info(f"✅ [{idx}/{len(recipients)}] Successfully sent to {recipient} — {hiring_manager} @ {company}")
+                    sending_status["results"].append({
+                        "status": "success",
+                        "recipient": recipient,
+                        "hiring_manager": hiring_manager,
+                        "company": company,
+                        "index": idx,
+                        "total": len(recipients)
+                    })
+                else:
+                    error_msg = f"HTTP {response.status_code}: {response.text}"
+                    logger.error(f"❌ [{idx}/{len(recipients)}] Failed to send to {recipient}: {error_msg}")
+                    sending_status["results"].append({
+                        "status": "error",
+                        "recipient": recipient,
+                        "error": error_msg
+                    })
+            
+                if idx < len(recipients):
+                    delay_secs = random.randint(600, 700)
+                    logger.info(f"⏳ Waiting {delay_secs} seconds ({delay_secs//60} minutes) before next email...")
+                    time.sleep(delay_secs)
+            
             except Exception as send_err:
                 error_msg = f"Failed to send to {recipient}: {str(send_err)}"
                 logger.error(f"❌ [{idx}/{len(recipients)}] {error_msg}")
@@ -271,30 +222,9 @@ def send_emails_async():
                     "recipient": recipient,
                     "error": str(send_err)
                 })
-
-            if idx < len(recipients):
-                delay_secs = random.randint(600, 700)
-                logger.info(f"⏳ Waiting {delay_secs} seconds ({delay_secs//60} minutes) before next email...")
-                time.sleep(delay_secs)
-
-        if server:
-            server.quit()
-            logger.info("🔌 SMTP connection closed")
+        
         sending_status["last_run"] = time.strftime("%Y-%m-%d %H:%M:%S")
         logger.info(f"🎉 Email sending completed! Last run: {sending_status['last_run']}")
-        
-    except Exception as e:
-        error_msg = f"Failed to connect/login to Mailgun SMTP: {str(e)}"
-        logger.error(f"❌ {error_msg}")
-        sending_status["results"].append({
-            "status": "error",
-            "message": error_msg
-        })
-        if server:
-            try:
-                server.quit()
-            except:
-                pass
     finally:
         sending_status["is_sending"] = False
         logger.info("🏁 Email sending process finished")
