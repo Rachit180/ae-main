@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: email-sender-api
+    env: python
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: MAILGUN_SMTP_LOGIN
+        sync: false
+      - key: MAILGUN_SMTP_PASSWORD
+        sync: false
+      - key: SENDER_ADDRESS
+        sync: false
+      - key: API_KEY
+        sync: false
+        generateValue: true
+      - key: AUTO_SEND
+        value: "true"
+      - key: RESUME_FILE
+        value: RACHITJAIN_RESUME.pdf
+      - key: MAILGUN_SMTP_HOST
+        value: smtp.mailgun.org
+      - key: MAILGUN_SMTP_PORT
+        value: "587"
+        # Note: If port 587 times out, try port 2525 (alternative Mailgun port)
+      - key: PORT
+        value: "10000"
+
