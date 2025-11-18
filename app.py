@@ -61,11 +61,12 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-"urkansal@ciena.com": ("Urvashee Kansal", "Ciena"),
-"rsingh@ciena.com": ("Ravikaran Singh", "Ciena"),
-"sdubey@ciena.com": ("Sarvesh Dubey", "Ciena"),
-"mreyaz@ciena.com": ("Mohd Reyaz", "Ciena"),
-"heenakha@ciena.com": ("Heena Khatri", "Ciena")
+"rachitjainemail@gmail.com": ("Rachit Jain", "Ciena"),
+"markinsoncarter230@gmail.com": ("Markin Son Carter", "Ciena"),
+"markinson2425@gmail.com": ("Markin Son Carter", "Ciena"),
+"anmukher@ciena.com": ("Anindita Mukherjee", "Ciena"),
+"shreya@ciena.com": ("Shreya Gupta", "Ciena"),
+"akashhhhs.r@gmail.com": ("Akash Singh", "Ciena"),
 }
 
 # Email Body (HTML)
@@ -134,6 +135,21 @@ def build_message(sender, recipient, hiring_manager, company, resume_bytes, resu
     msg.attach(resume)
     return msg
 
+def keep_alive_during_wait(delay_secs, service_url):
+    """Ping the service every 10 seconds during wait period to prevent spin-down"""
+    ping_interval = 10
+    elapsed = 0
+    
+    while elapsed < delay_secs:
+        time.sleep(ping_interval)
+        elapsed += ping_interval
+        try:
+            # Self-ping to keep the service alive
+            requests.get(service_url, timeout=5)
+            logger.debug(f"🔄 Keep-alive ping sent ({elapsed}s / {delay_secs}s)")
+        except Exception as e:
+            logger.debug(f"⚠️ Keep-alive ping failed: {e}")
+
 def send_emails_async():
     """Send emails in background thread"""
     global sending_status
@@ -168,6 +184,11 @@ def send_emails_async():
         resume_bytes = f.read()
     resume_filename = os.path.basename(RESUME_FILE)
     logger.info(f"✅ Resume file loaded: {len(resume_bytes)} bytes")
+
+    # Determine service URL for keep-alive pings
+    service_url = os.environ.get("RENDER_EXTERNAL_URL", "http://localhost:5000/health")
+    if not service_url.endswith("/health"):
+        service_url = service_url.rstrip("/") + "/health"
 
     try:
         logger.info(f"🌐 Using Mailgun HTTPS API (domain={MAILGUN_DOMAIN})")
@@ -213,7 +234,8 @@ def send_emails_async():
                 if idx < len(recipients):
                     delay_secs = random.randint(600, 700)
                     logger.info(f"⏳ Waiting {delay_secs} seconds ({delay_secs//60} minutes) before next email...")
-                    time.sleep(delay_secs)
+                    logger.info(f"🔄 Keep-alive pings enabled to prevent service spin-down")
+                    keep_alive_during_wait(delay_secs, service_url)
             
             except Exception as send_err:
                 error_msg = f"Failed to send to {recipient}: {str(send_err)}"
