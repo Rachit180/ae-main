@@ -61,12 +61,28 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-"rachitjainemail@gmail.com": ("Rachit Jain", "Ciena"),
-"markinsoncarter230@gmail.com": ("Markin Son Carter", "Ciena"),
-"markinson2425@gmail.com": ("Markin Son Carter", "Ciena"),
-"anmukher@ciena.com": ("Anindita Mukherjee", "Ciena"),
-"shreya@ciena.com": ("Shreya Gupta", "Ciena"),
-"akashhhhs.r@gmail.com": ("Akash Singh", "Ciena"),
+"brad@qualtrics.com": ("Brad Anderson", "Qualtrics"),
+"austinc@qualtrics.com": ("Austin Cooper", "Qualtrics"),
+"victoriaj@qualtrics.com": ("Torie Jensen", "Qualtrics"),
+"alir@qualtrics.com": ("Ali Rohani", "Qualtrics"),
+"bpreto@qualtrics.com": ("Bruno Preto", "Qualtrics"),
+"gurdeep@qualtrics.com": ("Gurdeep P", "Qualtrics"),
+"justins@qualtrics.com": ("Justin Schille", "Qualtrics"),
+"kcampbell@qualtrics.com": ("Kevin C", "Qualtrics"),
+"nkouma@qualtrics.com": ("Nick Kouma", "Qualtrics"),
+"jmurphy@qualtrics.com": ("Jordan Murphy", "Qualtrics"),
+"xinchaoj@qualtrics.com": ("Xinchao Jiang", "Qualtrics"),
+"lynn@qualtrics.com": ("Lynn G", "Qualtrics"),
+"rpanice@qualtrics.com": ("Ray P", "Qualtrics"),
+"nicka@qualtrics.com": ("Nick Apeland", "Qualtrics"),
+"dtzimas@qualtrics.com": ("Dimitri Tzimas", "Qualtrics"),
+"spatil@qualtrics.com": ("Swapnil P", "Qualtrics"),
+"bnmezi@qualtrics.com": ("Brian Nmezi", "Qualtrics"),
+"hannaho@qualtrics.com": ("Hannah E", "Qualtrics"),
+"leahl@qualtrics.com": ("Leah Strader", "Qualtrics"),
+"jpalak@qualtrics.com": ("Jonathan P", "Qualtrics"),
+"carolh@qualtrics.com": ("Carol H", "Qualtrics"),
+
 }
 
 # Email Body (HTML)
