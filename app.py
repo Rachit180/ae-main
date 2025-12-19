@@ -58,11 +58,23 @@ API_KEY = os.environ.get("API_KEY", "")
 
 # Auto-send emails on startup (set AUTO_SEND=false to disable)
 AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
+#har har mahadev
 
 # recipients mapping
 recipients = {
-"jain.romana@gmail.com": ("Rajesh Jain", "Qualtrics"),
-"roma.jain@genpact.com": ("Romana Jain", "Genpact")
+"malhotrak@amazon.com": ("Kunika Malhotra", "Amazon"),
+"kumarm@amazon.com": ("Mukul Kumar", "Amazon"),
+"ravi.r@amazon.com": ("Ravi Raushan", "Amazon"),
+"ddpik@amazon.com": ("Deepika Dande", "Amazon"),
+"hvarshney@amazon.com": ("Harshit Varshney", "Amazon"),
+"mareduv@amazon.com": ("Nagarjuna", "Amazon"),
+"sidhartg@amazon.com": ("Sidharth Gupta", "Amazon"),
+"shweu@amazon.com": ("Shweta Upadhyay", "Amazon"),
+"aroran@amazon.com": ("Nupur Arora", "Amazon"),
+"vyasonal@amazon.com": ("Sonali Vyas", "Amazon"),
+"abishgm@amazon.com": ("Abish Ganesh", "Amazon"),
+"subratsd@amazon.com": ("Subrat Dash", "Amazon")
+
 }
 
 # Email Body (HTML)
