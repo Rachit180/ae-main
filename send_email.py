@@ -51,10 +51,19 @@ RESUME_FILE = os.environ.get("RESUME_FILE", "RACHITJAIN_RESUME.pdf")
 # recipients mapping
 recipients = {
 
+"malhotrak@amazon.com": ("Kunika Malhotra", "Amazon"),
+"kumarm@amazon.com": ("Mukul Kumar", "Amazon"),
+"ravi.r@amazon.com": ("Ravi Raushan", "Amazon"),
+"ddpik@amazon.com": ("Deepika Dande", "Amazon"),
+"hvarshney@amazon.com": ("Harshit Varshney", "Amazon"),
+"mareduv@amazon.com": ("Nagarjuna", "Amazon"),
+"sidhartg@amazon.com": ("Sidharth Gupta", "Amazon"),
+"shweu@amazon.com": ("Shweta Upadhyay", "Amazon"),
+"aroran@amazon.com": ("Nupur Arora", "Amazon"),
+"vyasonal@amazon.com": ("Sonali Vyas", "Amazon"),
+"abishgm@amazon.com": ("Abish Ganesh", "Amazon"),
+"subratsd@amazon.com": ("Subrat Dash", "Amazon")
 
-"sai.gandlapalli@iongroup.com": ("Sai Gandlapalli", "ION"),
-"rashi.pandita@iongroup.com": ("Rashi Pandita", "ION"),
-"archana.singh@iongroup.com": ("Archana Singh", "ION"),
 
  }
 #gfh
