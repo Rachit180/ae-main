@@ -107,7 +107,7 @@ def build_message(sender, recipient, hiring_manager, company, resume_bytes, resu
     msg["From"] = sender
     msg["To"] = recipient
     msg["Subject"] = f"Application for SDE Fresher Role - Rachit Jain, DTU at {company}"
-    body = BODY_TEMPLATE.format(hiring_manager=hiring_manager, company=company)
+    body = BODY_TEMPLATE.format(hiring_manager=hiring_manager, company_name=company)
     msg.attach(MIMEText(body, "html"))
 
     resume = MIMEApplication(resume_bytes, _subtype="pdf")
@@ -180,7 +180,7 @@ def send_emails_async():
             try:
                 logger.info(f"📨 [{idx}/{len(recipients)}] Preparing email for {recipient} — {hiring_manager} @ {company}")
                 subject = f"Application for SDE Fresher Role - Rachit Jain, DTU at {company}"
-                html_body = BODY_TEMPLATE.format(hiring_manager=hiring_manager, company=company)
+                html_body = BODY_TEMPLATE.format(hiring_manager=hiring_manager, company_name=company)
                 
                 data = {
                     "from": SENDER_ADDRESS,
