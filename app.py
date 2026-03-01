@@ -78,35 +78,18 @@ recipients = {
 }
 
 # Email Body (HTML)
-BODY_TEMPLATE = """
+BODY_TEMPLATE = """ 
 <html>
 <body>
-    <p>Hello {hiring_manager}</b>,</p>
+    <p>Hello {hiring_manager},</p>
+    <p>My name is Rachit Jain, and I am a final-year B.Tech student in Computer Software Engineering at Delhi Technological University (DTU), graduating in 2026. I am writing to express my interest in a full-time Software Development / AI Engineer opportunity at [Company Name].</p>
+    <p>I have strong foundations in Data Structures and Algorithms, Object-Oriented Programming, DBMS, Operating Systems, and Computer Networks, complemented by hands-on experience building Agentic AI and GenAI-driven production systems where LLMs and intelligent agents are embedded within backend services for automation, decision orchestration, and real-time inference. My technical skill set includes Java, Python, C++, Spring Boot, React, and Node.js, with a specialization in designing multi-agent architectures, LLM-integrated workflows, and scalable AI-powered platforms.</p>
+    <p>During my GenAI Internship at MPS Limited, I designed and built an AI-driven SDLC automation platform that transformed raw requirements into complete software artifacts. The system leveraged LangGraph-based agent orchestration with semantic validation and integrated AI models into a Spring Boot backend to generate user stories, acceptance criteria, sprint plans, architectures, and test cases. The platform incorporated Hugging Face models, GitHub APIs, Apache PDFBox, and Apache POI to deliver structured, version-controlled outputs in a production environment.</p>
+    <p>Previously, I have worked across both SDE and AI-focused roles, where I built a machine learning–enabled health-tech application that improved responsiveness and user engagement, and fine-tuned a LLaMA-based conversational AI system to automate customer support workflows and significantly reduce manual effort.</p>
+    <p>Beyond internships, I have developed several end-to-end AI systems, including a real-time smart traffic signal optimization system using YOLOv8 and DeepSORT, an automated brain tumor segmentation pipeline using a 3D Attention U-Net, and authored a published research paper on audio-based machine fault diagnosis (ICCCNT 2024).</p>
+    <p>I would greatly appreciate the opportunity to contribute to [Company Name] and discuss how my experience in Agentic AI, scalable backend systems, and applied machine learning can create meaningful impact for your team.</p>
+    <p>Thank you for your time and consideration.</p>
 
-    <p>My name is <b>Rachit Jain</b>. I am a <b>fourth-year B.Tech (Software Engineering) student</b> at
-    <b>Delhi Technological University</b> (2022–2026), with a strong foundation in software development and machine learning.
-    I am proficient in <b>C / C++ , Python, Node.js, React, OpenCV, TensorFlow, PyTorch,</b> and have hands-on experience
-    across full-stack development and AI/ML pipelines. I am seeking a <b>full-time fresher opportunity</b> in SDE, ML engineering,
-    or a related domain.</p>
-
-    <p>Below are a few highlights from my recent work and internships:</p>
-
-    <ul>
-        <li><b>AI Intern — Path Infotech Ltd (Jun 2025 – Jul 2025):</b> Fine-tuned Llama 3 and built a high-performance conversational chatbot to automate AC product-defect support, improving response times and reducing manual effort.</li>
-
-        <li><b>Full Stack Developer — Gabbit Trans Systems (Jun 2024 – Jul 2024):</b> Built core features for a health app (Android/Flutter + Node.js backend), improving responsiveness and user engagement.</li>
-
-        <li><b>Bharat Bhraman (AI travel platform):</b> Designed an AI-driven itinerary & image-to-place recommendation system (CLIP + ONNX, TF-IDF + cosine + geo fusion) with real-time suggestions and smart guide matchmaking.</li>
-
-        <li><b>Dehaze Rescue Vision:</b> Built a real-time de-smoking / de-hazing pipeline using YOLOv8, Dark Channel Prior, and STTN to improve rescue-scene visibility and tracking.</li>
-
-        <li><b>Research — Audio-based Machine Fault Diagnosis (Published):</b> Developed a hybrid feature-extraction + ensemble learning pipeline (SVC, XGBoost, Random Forest) achieving high detection accuracy.</li>
-
-    </ul>
-
-    <p>I am confident my combination of full-stack and ML experience — plus published research and hands-on internships — will allow me to contribute effectively to your team.</p>
-
-    <p>I would be grateful if you consider my application for relevant roles at your firm. Thank you for your time and consideration.</p>
 
     <p>Yours sincerely,<br>
     <b>Rachit Jain</b><br>
