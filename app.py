@@ -62,19 +62,8 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-"malhotrak@amazon.com": ("Kunika Malhotra", "Amazon"),
-"kumarm@amazon.com": ("Mukul Kumar", "Amazon"),
-"ravi.r@amazon.com": ("Ravi Raushan", "Amazon"),
-"ddpik@amazon.com": ("Deepika Dande", "Amazon"),
-"hvarshney@amazon.com": ("Harshit Varshney", "Amazon"),
-"mareduv@amazon.com": ("Nagarjuna", "Amazon"),
-"sidhartg@amazon.com": ("Sidharth Gupta", "Amazon"),
-"shweu@amazon.com": ("Shweta Upadhyay", "Amazon"),
-"aroran@amazon.com": ("Nupur Arora", "Amazon"),
-"vyasonal@amazon.com": ("Sonali Vyas", "Amazon"),
-"abishgm@amazon.com": ("Abish Ganesh", "Amazon"),
-"subratsd@amazon.com": ("Subrat Dash", "Amazon")
-
+"rachitjainemail@gmail.com": ("Kunika Malhotra", "Amazon"),
+"markinson2425@gmail.com": ("Mukul Kumar", "Amazon")
 }
 
 # Email Body (HTML)
