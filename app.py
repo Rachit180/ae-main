@@ -67,33 +67,25 @@ recipients = {
 }
 
 # Email Body (HTML)
-BODY_TEMPLATE = """ 
-<html>
-<body>
-    <p>Hello {hiring_manager},</p>
-    <p>My name is Rachit Jain, and I am a final-year B.Tech student in Computer Software Engineering at Delhi Technological University (DTU), formely Delhi College of Engineering (DCE), graduating in 2026. I am writing to express my interest in a full-time Software Development / AI Engineer opportunity at {company_name}.</p>
-    <p>I have strong foundations in Data Structures and Algorithms, Object-Oriented Programming, DBMS, Operating Systems, and Computer Networks, complemented by hands-on experience building Agentic AI and GenAI-driven production systems where LLMs and intelligent agents are embedded within backend services for automation, decision orchestration, and real-time inference. My technical skill set includes Java, Python, C++, Spring Boot, React, and Node.js, with a specialization in designing multi-agent architectures, LLM-integrated workflows, and scalable AI-powered platforms.</p>
-    <p>During my GenAI Internship at MPS Limited, I designed and built an AI-driven SDLC automation platform that transformed raw requirements into complete software artifacts. The system leveraged LangGraph-based agent orchestration with semantic validation and integrated AI models into a Spring Boot backend to generate user stories, acceptance criteria, sprint plans, architectures, and test cases. The platform incorporated Hugging Face models, GitHub APIs, Apache PDFBox, and Apache POI to deliver structured, version-controlled outputs in a production environment.</p>
-    <p>Previously, I have worked across both SDE and AI-focused roles, where I built a machine learning–enabled health-tech application that improved responsiveness and user engagement, and fine-tuned a LLaMA-based conversational AI system to automate customer support workflows and significantly reduce manual effort.</p>
-    <p>Beyond internships, I have developed several end-to-end AI systems, including a real-time smart traffic signal optimization system using YOLOv8 and DeepSORT, an automated brain tumor segmentation pipeline using a 3D Attention U-Net, and authored a published research paper on audio-based machine fault diagnosis (ICCCNT 2024).</p>
-    <p>I would greatly appreciate the opportunity to contribute to {company_name} and discuss how my experience in Agentic AI, scalable backend systems, and applied machine learning can create meaningful impact for your team.</p>
-    <p>Thank you for your time and consideration.</p>
-
-
-    <p>Yours sincerely,<br>
-    <b>Rachit Jain</b><br>
-    📧 <a href="mailto:rachitjainemail@gmail.com">rachitjainemail@gmail.com</a><br>
-    📞 +91-9650090580<br>
-    <a href="https://github.com/Rachit180">GitHub</a> | 
-    <a href="https://www.linkedin.com/in/rachit-jain-875aa2247/">LinkedIn</a></p>
-
-    <p style="font-size:0.9em; color:gray;">
-        (Resume details and full project list are available in my resume.)
-    </p>
-
+BODY_TEMPLATE = """<html>
+<body style="font-family: Arial, sans-serif; font-size: 14px; color: #222;">
+<p>Hello {hiring_manager},</p>
+<p>My name is Rachit Jain, and I am a final-year B.Tech student in Computer Software Engineering at Delhi Technological University (DTU), formely Delhi College of Engineering (DCE), graduating in 2026. I am writing to express my interest in a full-time Software Development / AI Engineer opportunity at {company_name}.</p>
+<p>I have strong foundations in Data Structures and Algorithms, Object-Oriented Programming, DBMS, Operating Systems, and Computer Networks, complemented by hands-on experience building Agentic AI and GenAI-driven production systems where LLMs and intelligent agents are embedded within backend services for automation, decision orchestration, and real-time inference. My technical skill set includes Java, Python, C++, Spring Boot, React, and Node.js, with a specialization in designing multi-agent architectures, LLM-integrated workflows, and scalable AI-powered platforms.</p>
+<p>During my GenAI Internship at MPS Limited, I designed and built an AI-driven SDLC automation platform that transformed raw requirements into complete software artifacts. The system leveraged LangGraph-based agent orchestration with semantic validation and integrated AI models into a Spring Boot backend to generate user stories, acceptance criteria, sprint plans, architectures, and test cases. The platform incorporated Hugging Face models, GitHub APIs, Apache PDFBox, and Apache POI to deliver structured, version-controlled outputs in a production environment.</p>
+<p>Previously, I have worked across both SDE and AI-focused roles, where I built a machine learning–enabled health-tech application that improved responsiveness and user engagement, and fine-tuned a LLaMA-based conversational AI system to automate customer support workflows and significantly reduce manual effort.</p>
+<p>Beyond internships, I have developed several end-to-end AI systems, including a real-time smart traffic signal optimization system using YOLOv8 and DeepSORT, an automated brain tumor segmentation pipeline using a 3D Attention U-Net, and authored a published research paper on audio-based machine fault diagnosis (ICCCNT 2024).</p>
+<p>I would greatly appreciate the opportunity to contribute to {company_name} and discuss how my experience in Agentic AI, scalable backend systems, and applied machine learning can create meaningful impact for your team.</p>
+<p>I am attaching my resume below for your kind reference.</p>
+<p>Thank you for your time and consideration.</p>
+<p>Yours sincerely,<br>
+<b>Rachit Jain</b><br>
+&#128231; <a href="mailto:rachitjainemail@gmail.com">rachitjainemail@gmail.com</a><br>
+&#128222; +91-9650090580<br>
+<a href="https://github.com/Rachit180">GitHub</a> |
+<a href="https://www.linkedin.com/in/rachit-jain-875aa2247/">LinkedIn</a></p>
 </body>
-</html>
-"""
+</html>"""
 
 # Global status tracking
 sending_status = {
