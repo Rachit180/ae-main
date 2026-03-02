@@ -62,8 +62,16 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-"rachitjainemail@gmail.com": ("Kunika Malhotra", "Amazon"),
-"markinson2425@gmail.com": ("Mukul Kumar", "Amazon")
+    "das.ankita@flipkart.com": ("Ankita Das", "Flipkart"),
+    "ritika.singh2@flipkart.com": ("Ritika Singh", "Flipkart"),
+    "divya.porwal@flipkart.com": ("Divya Porwal", "Flipkart"),
+    "riyasha.jaiswal@flipkart.com": ("Riyasha Jaiswal", "Flipkart"),
+    "hemant.badri@flipkart.com": ("Hemant Badri", "Flipkart"),
+    "nagajyothi.kj@flipkart.com": ("Nagajyothi Kj", "Flipkart"),
+    "samta.katiyar@flipkart.com": ("Samta Katiyar", "Flipkart"),
+    "sumit.chandra@flipkart.com": ("Sumit Chandra", "Flipkart"),
+    "ishtiyaque.ansari@flipkart.com": ("Ishtiyaque Ansari", "Flipkart"),
+    "deepa.arora@flipkart.com": ("Deepa Rani", "Flipkart")
 }
 
 # Email Body (HTML)
@@ -98,7 +106,7 @@ def build_message(sender, recipient, hiring_manager, company, resume_bytes, resu
     msg = MIMEMultipart()
     msg["From"] = sender
     msg["To"] = recipient
-    msg["Subject"] = f"Application for SDE Fresher Role - Rachit Jain, DTU at {company}"
+    msg["Subject"] = f"Application for SDE/ AI Engineer Fresher Role - Rachit Jain, DTU at {company}"
     body = BODY_TEMPLATE.format(hiring_manager=hiring_manager, company_name=company)
     msg.attach(MIMEText(body, "html"))
 
