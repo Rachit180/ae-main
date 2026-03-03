@@ -62,16 +62,15 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-    "das.ankita@flipkart.com": ("Ankita Das", "Flipkart"),
-    "ritika.singh2@flipkart.com": ("Ritika Singh", "Flipkart"),
-    "divya.porwal@flipkart.com": ("Divya Porwal", "Flipkart"),
-    "riyasha.jaiswal@flipkart.com": ("Riyasha Jaiswal", "Flipkart"),
-    "hemant.badri@flipkart.com": ("Hemant Badri", "Flipkart"),
-    "nagajyothi.kj@flipkart.com": ("Nagajyothi Kj", "Flipkart"),
-    "samta.katiyar@flipkart.com": ("Samta Katiyar", "Flipkart"),
-    "sumit.chandra@flipkart.com": ("Sumit Chandra", "Flipkart"),
-    "ishtiyaque.ansari@flipkart.com": ("Ishtiyaque Ansari", "Flipkart"),
-    "deepa.arora@flipkart.com": ("Deepa Rani", "Flipkart")
+    "thirukumaran.r@nokia.com": ("Thirukumaran Renganathan", "Nokia"),
+    "satish.nair@nokia.com": ("Satish Nair", "Nokia"),
+    "sparsh.walia@nokia.com": ("Sparsh Walia", "Nokia"),
+    "shobhika.shukla@nokia.com": ("Shobhika Shukla", "Nokia"),
+    "anurag.kumar@nokia.com": ("Anurag Kumar", "Nokia"),
+    "a.sharma@nokia.com": ("Aditya Sharma", "Nokia"),
+    "syed.a@nokia.com": ("Syed A", "Nokia"),
+    "surya.chirravuri@nokia.com": ("Surya Chirravuri", "Nokia"),
+    "bhagyashree.chandak@nokia.com": ("Bhagyashree Chandak", "Nokia")
 }
 
 # Email Body (HTML)
