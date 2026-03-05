@@ -62,15 +62,14 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-    "thirukumaran.r@nokia.com": ("Thirukumaran Renganathan", "Nokia"),
-    "satish.nair@nokia.com": ("Satish Nair", "Nokia"),
-    "sparsh.walia@nokia.com": ("Sparsh Walia", "Nokia"),
-    "shobhika.shukla@nokia.com": ("Shobhika Shukla", "Nokia"),
-    "anurag.kumar@nokia.com": ("Anurag Kumar", "Nokia"),
-    "a.sharma@nokia.com": ("Aditya Sharma", "Nokia"),
-    "syed.a@nokia.com": ("Syed A", "Nokia"),
-    "surya.chirravuri@nokia.com": ("Surya Chirravuri", "Nokia"),
-    "bhagyashree.chandak@nokia.com": ("Bhagyashree Chandak", "Nokia")
+    "jatin.vasisht@anarock.com": ("Jatin Vasisht", "ANAROCK"),
+    "deepak.jangra@anarock.com": ("Deepak Jangra", "ANAROCK"),
+    "amjad.khan@anarock.com": ("Amjad Khan", "ANAROCK"),
+    "kanil.shah@anarock.com": ("Kanil Shah", "ANAROCK"),
+    "varun.saxena@anarock.com": ("Varun Saxena", "ANAROCK"),
+    "gurmeet.singh@anarock.com": ("Gurmeet Anand", "ANAROCK"),
+    "anubhav.singh@anarock.com": ("Anubhav Singh", "ANAROCK"),
+    "chaitra.b@anarock.com": ("Chaitra B", "ANAROCK")
 }
 
 # Email Body (HTML)
