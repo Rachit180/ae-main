@@ -62,14 +62,22 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-    "jatin.vasisht@anarock.com": ("Jatin Vasisht", "ANAROCK"),
-    "deepak.jangra@anarock.com": ("Deepak Jangra", "ANAROCK"),
-    "amjad.khan@anarock.com": ("Amjad Khan", "ANAROCK"),
-    "kanil.shah@anarock.com": ("Kanil Shah", "ANAROCK"),
-    "varun.saxena@anarock.com": ("Varun Saxena", "ANAROCK"),
-    "gurmeet.singh@anarock.com": ("Gurmeet Anand", "ANAROCK"),
-    "anubhav.singh@anarock.com": ("Anubhav Singh", "ANAROCK"),
-    "chaitra.b@anarock.com": ("Chaitra B", "ANAROCK")
+    "shamita.singh@honeywell.com": ("Shamita Singh", "Honeywell"),
+    "rishikesh.shinde@honeywell.com": ("Rishikesh Shinde", "Honeywell"),
+    "shireen.jafri@honeywell.com": ("Shireen Jafri", "Honeywell"),
+    "mahesh.joshi2@honeywell.com": ("Mahesh Joshi", "Honeywell"),
+    "neha.bali@honeywell.com": ("Neha Bali", "Honeywell"),
+    "hemavathi.y@honeywell.com": ("Hemavathi Y", "Honeywell"),
+    "kiran.patel@honeywell.com": ("Kiran Patel", "Honeywell"),
+    "mayuri.tanawade@honeywell.com": ("Mayuri Tanawade", "Honeywell"),
+    "gaurav.singh@honeywell.com": ("Gaurav Singh", "Honeywell"),
+    "rupali.gupta@honeywell.com": ("Rupali Gupta", "Honeywell"),
+    "saurabh.agrawal@honeywell.com": ("Saurabh Agrawal", "Honeywell"),
+    "arppna.mehra@honeywell.com": ("Arppna Mehra", "Honeywell"),
+    "puja.sharma@honeywell.com": ("Puja Sharma", "Honeywell"),
+    "amit.chowdhury@honeywell.com": ("Amit Chowdhury", "Honeywell"),
+    "gaurav.kamble@honeywell.com": ("Gaurav Kamble", "Honeywell"),
+    "jaspreet.walia@honeywell.com": ("Jaspreet Walia", "Honeywell")
 }
 
 # Email Body (HTML)
