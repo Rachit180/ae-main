@@ -62,7 +62,6 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-    "shamita.singh@honeywell.com": ("Shamita Singh", "Honeywell"),
     "rishikesh.shinde@honeywell.com": ("Rishikesh Shinde", "Honeywell"),
     "shireen.jafri@honeywell.com": ("Shireen Jafri", "Honeywell"),
     "mahesh.joshi2@honeywell.com": ("Mahesh Joshi", "Honeywell"),
@@ -306,9 +305,23 @@ def get_status():
     })
 
 def trigger_auto_send():
-    """Trigger email sending automatically after a short delay"""
-    # Wait 5 seconds for the server to fully start
-    time.sleep(5)
+    """Trigger email sending automatically after server is confirmed up"""
+    # Wait for server to be fully up and responding
+    port = int(os.environ.get("PORT", 5000))
+    local_url = f"http://127.0.0.1:{port}/health"
+    
+    logger.info("⏳ Waiting for server to be ready before auto-send...")
+    for attempt in range(30):  # Try for up to 60 seconds
+        try:
+            resp = requests.get(local_url, timeout=3)
+            if resp.status_code == 200:
+                logger.info("✅ Server is ready and responding on port %d", port)
+                break
+        except Exception:
+            pass
+        time.sleep(2)
+    else:
+        logger.warning("⚠️ Server readiness check timed out, proceeding with auto-send anyway")
     
     if not AUTO_SEND:
         logger.info("⏸️  Auto-send disabled. Set AUTO_SEND=true to enable automatic sending.")
@@ -335,7 +348,7 @@ if AUTO_SEND:
     startup_thread = threading.Thread(target=trigger_auto_send)
     startup_thread.daemon = True
     startup_thread.start()
-    logger.info("✅ Auto-send thread started - emails will be sent automatically on startup")
+    logger.info("✅ Auto-send thread scheduled - will start after server is ready")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

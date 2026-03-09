@@ -3,7 +3,7 @@ services:
     name: email-sender-api
     env: python
     buildCommand: pip install --upgrade pip && pip install -r requirements.txt
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 2 --log-level info
     envVars:
       - key: MAILGUN_SMTP_LOGIN
         sync: false
@@ -23,6 +23,5 @@ services:
       - key: MAILGUN_SMTP_PORT
         value: "587"
         # Note: If port 587 times out, try port 2525 (alternative Mailgun port)
-      - key: PORT
-        value: "10000"
+      # PORT is automatically set by Render (default 10000) — do not override
 
