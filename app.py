@@ -62,21 +62,8 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-    "rishikesh.shinde@honeywell.com": ("Rishikesh Shinde", "Honeywell"),
-    "shireen.jafri@honeywell.com": ("Shireen Jafri", "Honeywell"),
-    "mahesh.joshi2@honeywell.com": ("Mahesh Joshi", "Honeywell"),
-    "neha.bali@honeywell.com": ("Neha Bali", "Honeywell"),
-    "hemavathi.y@honeywell.com": ("Hemavathi Y", "Honeywell"),
-    "kiran.patel@honeywell.com": ("Kiran Patel", "Honeywell"),
-    "mayuri.tanawade@honeywell.com": ("Mayuri Tanawade", "Honeywell"),
-    "gaurav.singh@honeywell.com": ("Gaurav Singh", "Honeywell"),
-    "rupali.gupta@honeywell.com": ("Rupali Gupta", "Honeywell"),
-    "saurabh.agrawal@honeywell.com": ("Saurabh Agrawal", "Honeywell"),
-    "arppna.mehra@honeywell.com": ("Arppna Mehra", "Honeywell"),
-    "puja.sharma@honeywell.com": ("Puja Sharma", "Honeywell"),
-    "amit.chowdhury@honeywell.com": ("Amit Chowdhury", "Honeywell"),
-    "gaurav.kamble@honeywell.com": ("Gaurav Kamble", "Honeywell"),
-    "jaspreet.walia@honeywell.com": ("Jaspreet Walia", "Honeywell")
+    "Takao.Morikawa@honeywell.com": ("Takao Morikawa", "Honeywell"),
+    "DivyaShree.HP@honeywell.com": ("DivyaShree HP", "Honeywell")
 }
 
 # Email Body (HTML)
