@@ -62,13 +62,17 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-    "som.dutta@dpworld.com": ("Som Dutta", "DP World"),
-    "aditya.katara@dpworld.com": ("Aditya Katara", "DP World"),
-    "payal.mazumdar1@dpworld.com": ("Payal Mazumdar", "DP World"),
-    "sudha.rangavajhula@dpworld.com": ("Sudha Rangavajhula", "DP World"),
-    "rahul.consultant2@dpworld.com": ("Rahul Sawant", "DP World"),
-    "pawar.sarvesh@mahindra.com": ("Sarvesh Pawar", "DP World"),
-    "shalini.consultant@dpworld.com": ("Shalini Gupta", "DP World")
+    "kcottur@meta.com": ("Keerthi Cottur", "Meta"),
+    "banerjeep@meta.com": ("Prateek Banerjee", "Meta"),
+    "jains@meta.com": ("Sakshi Jaiswal", "Meta"),
+    "sampathborra@meta.com": ("Sampath Kumar", "Meta"),
+    "monishm@meta.com": ("M Monish", "Meta"),
+    "ojasvibhatia@meta.com": ("Ojasvi Bhatia", "Meta"),
+    "devis@meta.com": ("Sireesha Devi", "Meta"),
+    "mchoudhary@fb.com": ("Mirali Choudhary", "Meta"),
+    "pjain@meta.com": ("Priyanshu Jain", "Meta"),
+    "nileshpandey@meta.com": ("Nilesh Pandey", "Meta"),
+    "lopa.mudra@meta.com": ("Lopa Mudra", "Meta")
 }
 
 # Email Body (HTML)
