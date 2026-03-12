@@ -62,17 +62,15 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-    "kcottur@meta.com": ("Keerthi Cottur", "Meta"),
-    "banerjeep@meta.com": ("Prateek Banerjee", "Meta"),
-    "jains@meta.com": ("Sakshi Jaiswal", "Meta"),
-    "sampathborra@meta.com": ("Sampath Kumar", "Meta"),
-    "monishm@meta.com": ("M Monish", "Meta"),
-    "ojasvibhatia@meta.com": ("Ojasvi Bhatia", "Meta"),
-    "devis@meta.com": ("Sireesha Devi", "Meta"),
-    "mchoudhary@fb.com": ("Mirali Choudhary", "Meta"),
-    "pjain@meta.com": ("Priyanshu Jain", "Meta"),
-    "nileshpandey@meta.com": ("Nilesh Pandey", "Meta"),
-    "lopa.mudra@meta.com": ("Lopa Mudra", "Meta")
+    "jjangid@ciena.com": ("Jai Jangid", "Ciena"),
+    "mopandey@ciena.com": ("Monika Pandey", "Ciena"),
+    "rasachde@ciena.com": ("Rajat Sachdeva", "Ciena"),
+    "mphogat@ciena.com": ("Mandeep Phogat", "Ciena"),
+    "irajput@ciena.com": ("Ishita Rajput", "Ciena"),
+    "sbrahman@ciena.com": ("Saurabh Brahmankar", "Ciena"),
+    "pnainani@ciena.com": ("Parag Nainani", "Ciena"),
+    "vtyagi@ciena.com": ("Varsha Tyagi", "Ciena"),
+    "mkharab@ciena.com": ("Mayank Kharab", "Ciena")
 }
 
 # Email Body (HTML)
