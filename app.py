@@ -61,8 +61,8 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 #har har mahadev
 
 # recipients mapping
+
 recipients = {
-    recipients = {
     "rashmit@satsure.co": ("Rashmit Sukhmani", "SatSure"),
     "sanayya@satsure.co": ("Sanayya", "SatSure"),
     "dhrubojyoti@satsure.co": ("Dhrubojyoti Das", "SatSure"),
