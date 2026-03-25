@@ -63,19 +63,22 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 # recipients mapping
 
 recipients = {
-    "rashmit@satsure.co": ("Rashmit Sukhmani", "SatSure"),
-    "sanayya@satsure.co": ("Sanayya", "SatSure"),
-    "dhrubojyoti@satsure.co": ("Dhrubojyoti Das", "SatSure"),
-    "satish.jasthi@satsure.co": ("Satish Jasthi", "SatSure"),
-    "sandarbh@satsure.co": ("Sandarbh Agrawal", "SatSure"),
-    "leander@satsure.co": ("Leander Cibi", "SatSure"),
-    "rounak@satsure.co": ("Rounak Goel", "SatSure"),
-    "abhishek@satsure.co": ("Abhishek Satyanarayana", "SatSure"),
-    "sparsh.pekhale@satsure.co": ("Sparsh Pekhale", "SatSure"),
-    "mohan.prashanth@satsure.co": ("Prashanth Mohan", "SatSure"),
-    "seneeta@satsure.co": ("Seneeta Arakal", "SatSure"),
-    "priyamvada@satsure.co": ("Priyamvada Nanjundiah", "SatSure")
-
+    "r.bolisetty@docusign.com": ("Ramakrishna Bolisetty", "DocuSign"),
+    "gabi.knowlton@docusign.com": ("Gabi Knowlton", "DocuSign"),
+    "craig.lewis@docusign.com": ("Craig Lewis", "DocuSign"),
+    "trina.thornton@docusign.com": ("Trina Thornton", "DocuSign"),
+    "inbar.gazit@docusign.com": ("Inbar Gazit", "DocuSign"),
+    "sanjay.vk@docusign.com": ("Sanjay Vk", "DocuSign"),
+    "holly.jackson@docusign.com": ("Holly Jackson", "DocuSign"),
+    "lopita.patnaik@docusign.com": ("Lopita Patnaik", "DocuSign"),
+    "megumi.kato@docusign.com": ("Megumi Kato", "DocuSign"),
+    "karen.armstrong@docusign.com": ("Karen Armstrong", "DocuSign"),
+    "khimraj.suthar@docusign.com": ("Khimraj Suthar", "DocuSign"),
+    "jonathon.hollowell@docusign.com": ("Jonathon Hollowell", "DocuSign"),
+    "shubhi.arora@docusign.com": ("Shubhi Arora", "DocuSign"),
+    "wolfgang.wessely@docusign.com": ("Wolfgang Wessely", "DocuSign"),
+    "hien.pham@docusign.com": ("Hien Pham", "DocuSign"),
+    "tyler.ocrowley@docusign.com": ("Tyler O'Crowley", "DocuSign")
 }
 
 # Email Body (HTML)
