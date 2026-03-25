@@ -62,15 +62,20 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 
 # recipients mapping
 recipients = {
-    "jjangid@ciena.com": ("Jai Jangid", "Ciena"),
-    "mopandey@ciena.com": ("Monika Pandey", "Ciena"),
-    "rasachde@ciena.com": ("Rajat Sachdeva", "Ciena"),
-    "mphogat@ciena.com": ("Mandeep Phogat", "Ciena"),
-    "irajput@ciena.com": ("Ishita Rajput", "Ciena"),
-    "sbrahman@ciena.com": ("Saurabh Brahmankar", "Ciena"),
-    "pnainani@ciena.com": ("Parag Nainani", "Ciena"),
-    "vtyagi@ciena.com": ("Varsha Tyagi", "Ciena"),
-    "mkharab@ciena.com": ("Mayank Kharab", "Ciena")
+    recipients = {
+    "rashmit@satsure.co": ("Rashmit Sukhmani", "SatSure"),
+    "sanayya@satsure.co": ("Sanayya", "SatSure"),
+    "dhrubojyoti@satsure.co": ("Dhrubojyoti Das", "SatSure"),
+    "satish.jasthi@satsure.co": ("Satish Jasthi", "SatSure"),
+    "sandarbh@satsure.co": ("Sandarbh Agrawal", "SatSure"),
+    "leander@satsure.co": ("Leander Cibi", "SatSure"),
+    "rounak@satsure.co": ("Rounak Goel", "SatSure"),
+    "abhishek@satsure.co": ("Abhishek Satyanarayana", "SatSure"),
+    "sparsh.pekhale@satsure.co": ("Sparsh Pekhale", "SatSure"),
+    "mohan.prashanth@satsure.co": ("Prashanth Mohan", "SatSure"),
+    "seneeta@satsure.co": ("Seneeta Arakal", "SatSure"),
+    "priyamvada@satsure.co": ("Priyamvada Nanjundiah", "SatSure")
+
 }
 
 # Email Body (HTML)
