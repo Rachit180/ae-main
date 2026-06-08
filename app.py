@@ -87,28 +87,22 @@ def get_email_body(hiring_manager, company):
 {app_number_section}
 <p>Hello {hiring_manager},</p>
 
-<p>My name is Rachit Jain, and I am a final-year B.Tech student in Computer Software Engineering at Delhi Technological University (DTU), formerly Delhi College of Engineering (DCE), graduating in 2026. I am writing to express my interest in a full-time Software Development / AI Engineer opportunity at {company}.</p>
 
-<p>I have strong foundations in Data Structures and Algorithms, Object-Oriented Programming, DBMS, Operating Systems, and Computer Networks, complemented by hands-on experience building Agentic AI and GenAI-driven production systems where LLMs and intelligent agents are embedded within backend services for automation, decision orchestration, and real-time inference. My technical skill set includes Java, Python, C++, Spring Boot, React, and Node.js, with a specialization in designing multi-agent architectures, LLM-integrated workflows, and scalable AI-powered platforms.</p>
 
-<p>During my GenAI Internship at MPS Limited, I designed and built an AI-driven SDLC automation platform that transformed raw requirements into complete software artifacts. The system leveraged LangGraph-based agent orchestration with semantic validation and integrated AI models into a Spring Boot backend to generate user stories, acceptance criteria, sprint plans, architectures, and test cases.</p>
-
-<p>Previously, I have worked across both SDE and AI-focused roles, where I built a machine learning\u2013enabled health-tech application and fine-tuned a LLaMA-based conversational AI system to automate workflows.</p>
-
-<p>Beyond internships, I have developed several end-to-end AI systems, including a real-time smart traffic signal optimization system using YOLOv8 and DeepSORT, and a 3D Attention U-Net\u2013based medical imaging pipeline.</p>
-
-<p>I would greatly appreciate the opportunity to contribute to {company} and discuss how my experience can add value.</p>
-
-<p>I am attaching my resume below for your kind reference.</p>
-
+<p>My name is Rachit Jain, and I am a final-year B.Tech student in Computer Software Engineering at Delhi Technological University (DTU), graduating in 2026. I am writing to express my interest in Software Engineer / AI Engineer opportunities at {company}.</p>
+<p>I have experience across Software Development and AI through internships at MPS Limited, Path Infotech, and Gabbit Trans Systems. My work spans React, Java, Python, Machine Learning, Deep Learning, NLP, Computer Vision, Generative AI, and Agentic AI systems. I have built production-grade web applications, AI-powered automation platforms, LLM-driven workflows, and intelligent agent-based solutions, along with authoring two published research papers in the AI/ML domain.</p>
+<p>My recent experience includes developing a React-based digital content management platform for UK Legal Deposit Libraries, building LangGraph-powered AI automation systems, fine-tuning LLaMA-based conversational AI solutions, and developing machine learning applications for real-world use cases.</p>
+<p>I would greatly appreciate the opportunity to contribute to {company} and would be grateful if you could consider my profile for any relevant Software Engineer, Machine Learning Engineer, or AI Engineer openings.</p>
+<p>I am attaching my resume for your reference.</p>
 <p>Thank you for your time and consideration.</p>
-
 <p>Yours sincerely,<br>
 <b>Rachit Jain</b><br>
 &#128231; <a href="mailto:rachitjainemail@gmail.com">rachitjainemail@gmail.com</a><br>
 &#128222; +91-9650090580<br>
 <a href="https://github.com/Rachit180">GitHub</a> |
+
 <a href="https://www.linkedin.com/in/rachit-jain-875aa2247/">LinkedIn</a></p>
+
 
 </body>
 </html>"""
