@@ -60,30 +60,44 @@ API_KEY = os.environ.get("API_KEY", "")
 AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 #har har mahadev
 
-# recipients mapping
+# === APPLICATION NUMBER ===
+# Set this before running the script. The SAME number is sent to ALL recipients.
+# Leave empty ("") to omit the application number from the email entirely.
+APPLICATION_NUMBER = ""
 
+# recipients mapping
 recipients = {
     "rachitjainemail@gmail.com": ("Rachit Jain", "Google")
 }
-  
 
-BODY_TEMPLATE = """<html>
+
+def get_email_body(hiring_manager, company):
+    """Build the HTML email body. Includes application number card only if APPLICATION_NUMBER is set."""
+    app_number_section = ""
+    if APPLICATION_NUMBER:abcd1234
+        app_number_section = f"""
+<div style="background-color: #f4f6f8; border-left: 4px solid #1a73e8; padding: 12px 16px; margin-bottom: 20px; border-radius: 4px;">
+  <span style="font-size: 13px; color: #555;">Application Number:</span><br>
+  <span style="font-size: 18px; font-weight: bold; color: #1a73e8; letter-spacing: 1px;">{APPLICATION_NUMBER}</span>
+</div>
+"""
+
+    return f"""<html>
 <body style="font-family: Arial, sans-serif; font-size: 14px; color: #222;">
+{app_number_section}
 <p>Hello {hiring_manager},</p>
 
-<p><b>Application Reference ID:</b> {referral_id}</p>
-
-<p>My name is Rachit Jain, and I am a final-year B.Tech student in Computer Software Engineering at Delhi Technological University (DTU), formerly Delhi College of Engineering (DCE), graduating in 2026. I am writing to express my interest in a full-time Software Development / AI Engineer opportunity at {company_name}.</p>
+<p>My name is Rachit Jain, and I am a final-year B.Tech student in Computer Software Engineering at Delhi Technological University (DTU), formerly Delhi College of Engineering (DCE), graduating in 2026. I am writing to express my interest in a full-time Software Development / AI Engineer opportunity at {company}.</p>
 
 <p>I have strong foundations in Data Structures and Algorithms, Object-Oriented Programming, DBMS, Operating Systems, and Computer Networks, complemented by hands-on experience building Agentic AI and GenAI-driven production systems where LLMs and intelligent agents are embedded within backend services for automation, decision orchestration, and real-time inference. My technical skill set includes Java, Python, C++, Spring Boot, React, and Node.js, with a specialization in designing multi-agent architectures, LLM-integrated workflows, and scalable AI-powered platforms.</p>
 
 <p>During my GenAI Internship at MPS Limited, I designed and built an AI-driven SDLC automation platform that transformed raw requirements into complete software artifacts. The system leveraged LangGraph-based agent orchestration with semantic validation and integrated AI models into a Spring Boot backend to generate user stories, acceptance criteria, sprint plans, architectures, and test cases.</p>
 
-<p>Previously, I have worked across both SDE and AI-focused roles, where I built a machine learning–enabled health-tech application and fine-tuned a LLaMA-based conversational AI system to automate workflows.</p>
+<p>Previously, I have worked across both SDE and AI-focused roles, where I built a machine learning\u2013enabled health-tech application and fine-tuned a LLaMA-based conversational AI system to automate workflows.</p>
 
-<p>Beyond internships, I have developed several end-to-end AI systems, including a real-time smart traffic signal optimization system using YOLOv8 and DeepSORT, and a 3D Attention U-Net–based medical imaging pipeline.</p>
+<p>Beyond internships, I have developed several end-to-end AI systems, including a real-time smart traffic signal optimization system using YOLOv8 and DeepSORT, and a 3D Attention U-Net\u2013based medical imaging pipeline.</p>
 
-<p>I would greatly appreciate the opportunity to contribute to {company_name} and discuss how my experience can add value.</p>
+<p>I would greatly appreciate the opportunity to contribute to {company} and discuss how my experience can add value.</p>
 
 <p>I am attaching my resume below for your kind reference.</p>
 
@@ -99,6 +113,15 @@ BODY_TEMPLATE = """<html>
 </body>
 </html>"""
 
+
+def get_subject(company):
+    """Build the email subject. Appends application number only if set."""
+    base_subject = f"Application for SDE/ AI Engineer Fresher Role - Rachit Jain, DTU at {company}"
+    if APPLICATION_NUMBER:
+        return f"{base_subject} [{APPLICATION_NUMBER}]"
+    return base_subject
+
+
 # Global status tracking
 sending_status = {
     "is_sending": False,
@@ -106,12 +129,13 @@ sending_status = {
     "results": []
 }
 
+
 def build_message(sender, recipient, hiring_manager, company, resume_bytes, resume_filename):
     msg = MIMEMultipart()
     msg["From"] = sender
     msg["To"] = recipient
-    msg["Subject"] = f"Application for SDE/ AI Engineer Fresher Role - Rachit Jain, DTU at {company}"
-    body = BODY_TEMPLATE.format(hiring_manager=hiring_manager, company_name=company)
+    msg["Subject"] = get_subject(company)
+    body = get_email_body(hiring_manager, company)
     msg.attach(MIMEText(body, "html"))
 
     resume = MIMEApplication(resume_bytes, _subtype="pdf")
@@ -119,43 +143,38 @@ def build_message(sender, recipient, hiring_manager, company, resume_bytes, resu
     msg.attach(resume)
     return msg
 
+
 def keep_alive_during_wait(delay_secs, service_url):
     """Ping the service every 10 seconds during wait period to prevent spin-down"""
     ping_interval = 10
     elapsed = 0
-    
+
     while elapsed < delay_secs:
         time.sleep(ping_interval)
         elapsed += ping_interval
         try:
-            # Self-ping to keep the service alive
             requests.get(service_url, timeout=5)
-            logger.debug(f"🔄 Keep-alive ping sent ({elapsed}s / {delay_secs}s)")
+            logger.debug(f"\U0001f504 Keep-alive ping sent ({elapsed}s / {delay_secs}s)")
         except Exception as e:
-            logger.debug(f"⚠️ Keep-alive ping failed: {e}")
+            logger.debug(f"\u26a0\ufe0f Keep-alive ping failed: {e}")
+
 
 def send_emails_async():
     """Send emails in background thread"""
     global sending_status
-    
-    logger.info("🚀 Starting email sending process...")
+
+    logger.info("\U0001f680 Starting email sending process...")
+    if APPLICATION_NUMBER:
+        logger.info(f"\U0001f4cb Application Number for this run: {APPLICATION_NUMBER}")
+    else:
+        logger.info("\U0001f4cb No Application Number set - will be omitted from emails")
     sending_status["is_sending"] = True
     sending_status["results"] = []
-    
+
     # Validate environment variables for HTTPS Mailgun API
     if not MAILGUN_API_KEY or not MAILGUN_DOMAIN or not SENDER_ADDRESS:
         error_msg = "Missing required environment variables for HTTPS send: MAILGUN_API_KEY, MAILGUN_DOMAIN, and/or SENDER_ADDRESS"
-        logger.error(f"❌ {error_msg}")
-        sending_status["results"].append({
-            "status": "error",
-            "message": error_msg
-        })
-        sending_status["is_sending"] = False
-        return
-    
-    if not os.path.isfile(RESUME_FILE):
-        error_msg = f"Resume file not found at: {RESUME_FILE}"
-        logger.error(f"❌ {error_msg}")
+        logger.error(f"\u274c {error_msg}")
         sending_status["results"].append({
             "status": "error",
             "message": error_msg
@@ -163,11 +182,21 @@ def send_emails_async():
         sending_status["is_sending"] = False
         return
 
-    logger.info(f"📄 Reading resume file: {RESUME_FILE}")
+    if not os.path.isfile(RESUME_FILE):
+        error_msg = f"Resume file not found at: {RESUME_FILE}"
+        logger.error(f"\u274c {error_msg}")
+        sending_status["results"].append({
+            "status": "error",
+            "message": error_msg
+        })
+        sending_status["is_sending"] = False
+        return
+
+    logger.info(f"\U0001f4c4 Reading resume file: {RESUME_FILE}")
     with open(RESUME_FILE, "rb") as f:
         resume_bytes = f.read()
     resume_filename = os.path.basename(RESUME_FILE)
-    logger.info(f"✅ Resume file loaded: {len(resume_bytes)} bytes")
+    logger.info(f"\u2705 Resume file loaded: {len(resume_bytes)} bytes")
 
     # Determine service URL for keep-alive pings
     service_url = os.environ.get("RENDER_EXTERNAL_URL", "http://localhost:5000/health")
@@ -175,29 +204,29 @@ def send_emails_async():
         service_url = service_url.rstrip("/") + "/health"
 
     try:
-        logger.info(f"🌐 Using Mailgun HTTPS API (domain={MAILGUN_DOMAIN})")
-        logger.info(f"📬 Total recipients to send: {len(recipients)}")
+        logger.info(f"\U0001f310 Using Mailgun HTTPS API (domain={MAILGUN_DOMAIN})")
+        logger.info(f"\U0001f4ec Total recipients to send: {len(recipients)}")
         api_base = f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages"
         auth = ("api", MAILGUN_API_KEY)
-        
+
         for idx, (recipient, (hiring_manager, company)) in enumerate(recipients.items(), start=1):
             try:
-                logger.info(f"📨 [{idx}/{len(recipients)}] Preparing email for {recipient} — {hiring_manager} @ {company}")
-                subject = f"Application for SDE Fresher Role - Rachit Jain, DTU at {company}"
-                html_body = BODY_TEMPLATE.format(hiring_manager=hiring_manager, company_name=company, referral_id="123" )
-                
+                logger.info(f"\U0001f4e8 [{idx}/{len(recipients)}] Preparing email for {recipient} \u2014 {hiring_manager} @ {company}")
+                subject = get_subject(company)
+                html_body = get_email_body(hiring_manager, company)
+
                 data = {
                     "from": SENDER_ADDRESS,
                     "to": recipient,
                     "subject": subject,
                     "html": html_body
                 }
-                
+
                 files = [("attachment", (resume_filename, resume_bytes, "application/pdf"))]
-                
+
                 response = requests.post(api_base, auth=auth, data=data, files=files, timeout=60)
                 if response.status_code >= 200 and response.status_code < 300:
-                    logger.info(f"✅ [{idx}/{len(recipients)}] Successfully sent to {recipient} — {hiring_manager} @ {company}")
+                    logger.info(f"\u2705 [{idx}/{len(recipients)}] Successfully sent to {recipient} \u2014 {hiring_manager} @ {company}")
                     sending_status["results"].append({
                         "status": "success",
                         "recipient": recipient,
@@ -208,33 +237,34 @@ def send_emails_async():
                     })
                 else:
                     error_msg = f"HTTP {response.status_code}: {response.text}"
-                    logger.error(f"❌ [{idx}/{len(recipients)}] Failed to send to {recipient}: {error_msg}")
+                    logger.error(f"\u274c [{idx}/{len(recipients)}] Failed to send to {recipient}: {error_msg}")
                     sending_status["results"].append({
                         "status": "error",
                         "recipient": recipient,
                         "error": error_msg
                     })
-            
+
                 if idx < len(recipients):
                     delay_secs = random.randint(600, 700)
-                    logger.info(f"⏳ Waiting {delay_secs} seconds ({delay_secs//60} minutes) before next email...")
-                    logger.info(f"🔄 Keep-alive pings enabled to prevent service spin-down")
+                    logger.info(f"\u23f3 Waiting {delay_secs} seconds ({delay_secs//60} minutes) before next email...")
+                    logger.info(f"\U0001f504 Keep-alive pings enabled to prevent service spin-down")
                     keep_alive_during_wait(delay_secs, service_url)
-            
+
             except Exception as send_err:
                 error_msg = f"Failed to send to {recipient}: {str(send_err)}"
-                logger.error(f"❌ [{idx}/{len(recipients)}] {error_msg}")
+                logger.error(f"\u274c [{idx}/{len(recipients)}] {error_msg}")
                 sending_status["results"].append({
                     "status": "error",
                     "recipient": recipient,
                     "error": str(send_err)
                 })
-        
+
         sending_status["last_run"] = time.strftime("%Y-%m-%d %H:%M:%S")
-        logger.info(f"🎉 Email sending completed! Last run: {sending_status['last_run']}")
+        logger.info(f"\U0001f389 Email sending completed! Last run: {sending_status['last_run']}")
     finally:
         sending_status["is_sending"] = False
-        logger.info("🏁 Email sending process finished")
+        logger.info("\U0001f3c1 Email sending process finished")
+
 
 def check_auth():
     """Check API key if configured"""
@@ -243,6 +273,7 @@ def check_auth():
         if provided_key != API_KEY:
             return False
     return True
+
 
 @app.route("/")
 def home():
@@ -257,6 +288,7 @@ def home():
         }
     })
 
+
 @app.route("/health")
 def health():
     return jsonify({
@@ -266,36 +298,37 @@ def health():
         "recipients_count": len(recipients)
     })
 
+
 @app.route("/send", methods=["POST"])
 def send_emails():
     if not check_auth():
-        logger.warning("⚠️ Unauthorized access attempt to /send endpoint")
+        logger.warning("\u26a0\ufe0f Unauthorized access attempt to /send endpoint")
         return jsonify({"error": "Unauthorized"}), 401
-    
+
     if sending_status["is_sending"]:
-        logger.warning("⚠️ Email sending already in progress, request rejected")
+        logger.warning("\u26a0\ufe0f Email sending already in progress, request rejected")
         return jsonify({
             "status": "busy",
             "message": "Email sending is already in progress"
         }), 409
-    
-    logger.info(f"📬 Email sending triggered via API. Recipients: {len(recipients)}")
-    # Start sending in background thread
+
+    logger.info(f"\U0001f4ec Email sending triggered via API. Recipients: {len(recipients)}")
     thread = threading.Thread(target=send_emails_async)
     thread.daemon = True
     thread.start()
-    
+
     return jsonify({
         "status": "started",
         "message": "Email sending started in background",
         "recipients_count": len(recipients)
     })
 
+
 @app.route("/status", methods=["GET"])
 def get_status():
     if not check_auth():
         return jsonify({"error": "Unauthorized"}), 401
-    
+
     return jsonify({
         "is_sending": sending_status["is_sending"],
         "last_run": sending_status["last_run"],
@@ -303,53 +336,52 @@ def get_status():
         "total_recipients": len(recipients)
     })
 
+
 def trigger_auto_send():
     """Trigger email sending automatically after server is confirmed up"""
-    # Wait for server to be fully up and responding
     port = int(os.environ.get("PORT", 5000))
     local_url = f"http://127.0.0.1:{port}/health"
-    
-    logger.info("⏳ Waiting for server to be ready before auto-send...")
-    for attempt in range(30):  # Try for up to 60 seconds
+
+    logger.info("\u23f3 Waiting for server to be ready before auto-send...")
+    for attempt in range(30):
         try:
             resp = requests.get(local_url, timeout=3)
             if resp.status_code == 200:
-                logger.info("✅ Server is ready and responding on port %d", port)
+                logger.info("\u2705 Server is ready and responding on port %d", port)
                 break
         except Exception:
             pass
         time.sleep(2)
     else:
-        logger.warning("⚠️ Server readiness check timed out, proceeding with auto-send anyway")
-    
+        logger.warning("\u26a0\ufe0f Server readiness check timed out, proceeding with auto-send anyway")
+
     if not AUTO_SEND:
-        logger.info("⏸️  Auto-send disabled. Set AUTO_SEND=true to enable automatic sending.")
+        logger.info("\u23f8\ufe0f  Auto-send disabled. Set AUTO_SEND=true to enable automatic sending.")
         return
-    
+
     if sending_status["is_sending"]:
-        logger.info("⏭️  Skipping auto-send - email sending already in progress")
+        logger.info("\u23ed\ufe0f  Skipping auto-send - email sending already in progress")
         return
-    
-    # Check if emails were already sent in this session (prevent duplicate sends on quick restarts)
+
     if sending_status["last_run"]:
-        logger.info(f"⏭️  Skipping auto-send - emails already sent on {sending_status['last_run']}")
-        logger.info("💡 To send again, use POST /send endpoint or redeploy the service")
+        logger.info(f"\u23ed\ufe0f  Skipping auto-send - emails already sent on {sending_status['last_run']}")
+        logger.info("\U0001f4a1 To send again, use POST /send endpoint or redeploy the service")
         return
-    
-    logger.info("🤖 Auto-send enabled: Starting email sending automatically...")
-    logger.info(f"📬 Will send to {len(recipients)} recipient(s)")
+
+    logger.info("\U0001f916 Auto-send enabled: Starting email sending automatically...")
+    logger.info(f"\U0001f4ec Will send to {len(recipients)} recipient(s)")
     thread = threading.Thread(target=send_emails_async)
     thread.daemon = True
     thread.start()
+
 
 # Start auto-send in background when app initializes
 if AUTO_SEND:
     startup_thread = threading.Thread(target=trigger_auto_send)
     startup_thread.daemon = True
     startup_thread.start()
-    logger.info("✅ Auto-send thread scheduled - will start after server is ready")
+    logger.info("\u2705 Auto-send thread scheduled - will start after server is ready")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
-
