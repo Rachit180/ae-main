@@ -63,7 +63,7 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 # === APPLICATION NUMBER ===
 # Set this before running the script. The SAME number is sent to ALL recipients.
 # Leave empty ("") to omit the application number from the email entirely.
-APPLICATION_NUMBER = "bc&12-"
+APPLICATION_NUMBER = ""
 
 # recipients mapping
 recipients = {
