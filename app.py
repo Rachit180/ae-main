@@ -63,7 +63,7 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 # === APPLICATION NUMBER ===
 # Set this before running the script. The SAME number is sent to ALL recipients.
 # Leave empty ("") to omit the application number from the email entirely.
-APPLICATION_NUMBER = ""
+APPLICATION_NUMBER = "bc&12-"
 
 # recipients mapping
 recipients = {
@@ -74,7 +74,7 @@ recipients = {
 def get_email_body(hiring_manager, company):
     """Build the HTML email body. Includes application number card only if APPLICATION_NUMBER is set."""
     app_number_section = ""
-    if APPLICATION_NUMBER:abcd1234
+    if APPLICATION_NUMBER:
         app_number_section = f"""
 <div style="background-color: #f4f6f8; border-left: 4px solid #1a73e8; padding: 12px 16px; margin-bottom: 20px; border-radius: 4px;">
   <span style="font-size: 13px; color: #555;">Application Number:</span><br>
