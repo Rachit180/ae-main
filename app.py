@@ -76,11 +76,12 @@ def get_email_body(hiring_manager, company):
     app_number_section = ""
     if APPLICATION_NUMBER:
         app_number_section = f"""
-<div style="background-color: #f4f6f8; border-left: 4px solid #1a73e8; padding: 12px 16px; margin-bottom: 20px; border-radius: 4px;">
-  <span style="font-size: 13px; color: #555;">Application Number:</span><br>
-  <span style="font-size: 18px; font-weight: bold; color: #1a73e8; letter-spacing: 1px;">{APPLICATION_NUMBER}</span>
-</div>
-"""
+        <div style="margin-bottom: 20px;">
+            <p style="margin: 0; font-size: 14px; color: #333;">
+                <strong>Application Reference:</strong> {APPLICATION_NUMBER}
+            </p>
+        </div>
+        """
 
     return f"""<html>
 <body style="font-family: Arial, sans-serif; font-size: 14px; color: #222;">
