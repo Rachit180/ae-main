@@ -60,6 +60,20 @@ API_KEY = os.environ.get("API_KEY", "")
 AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 #har har mahadev
 
+# === TARGET MARKET ===
+# Set to "india" (or "1") for India recipients.
+# Set to "us" (or "2") for US recipients.
+# Controls which resume is attached and which email body is used.
+TARGET_MARKET = "us"   # <-- change to "us" when targeting US companies
+
+_market = TARGET_MARKET.strip().lower()
+if _market in ("us", "2"):
+    RESUME_FILE_OVERRIDE = os.path.join(os.path.dirname(__file__), "RACHITJAIN_RESUME1.pdf")
+    MARKET = "us"
+else:
+    RESUME_FILE_OVERRIDE = os.path.join(os.path.dirname(__file__), "RACHITJAIN_RESUME.pdf")
+    MARKET = "india"
+
 # === APPLICATION NUMBER ===
 # Set this before running the script. The SAME number is sent to ALL recipients.
 # Leave empty ("") to omit the application number from the email entirely.
@@ -72,7 +86,7 @@ recipients = {
 
 
 def get_email_body(hiring_manager, company):
-    """Build the HTML email body. Includes application number card only if APPLICATION_NUMBER is set."""
+    """Build the HTML email body based on TARGET_MARKET."""
     app_number_section = ""
     if APPLICATION_NUMBER:
         app_number_section = f"""
@@ -83,27 +97,41 @@ def get_email_body(hiring_manager, company):
         </div>
         """
 
-    return f"""<html>
-<body style="font-family: Arial, sans-serif; font-size: 14px; color: #222;">
-{app_number_section}
-<p>Hello {hiring_manager},</p>
-
-
-
-<p>My name is Rachit Jain, and I am a final-year B.Tech student in Computer Software Engineering at Delhi Technological University (DTU), graduating in 2026. I am writing to express my interest in Software Engineer / AI Engineer opportunities at {company}.</p>
+    if MARKET == "us":
+        body_paragraphs = f"""<p>My name is <b>Rachit Jain</b>, and I am a final-year B.Tech student in Computer Software Engineering at Delhi Technological University (DTU), graduating in 2026. I am writing to express my interest in Software Engineer / AI Engineer opportunities at <b>{company}</b>. <b>I am a U.S. citizen, authorized to work for any U.S. employer, with no work sponsorship or relocation assistance required.</b></p>
 <p>I have experience across Software Development and AI through internships at MPS Limited, Path Infotech, and Gabbit Trans Systems. My work spans React, Java, Python, Machine Learning, Deep Learning, NLP, Computer Vision, Generative AI, and Agentic AI systems. I have built production-grade web applications, AI-powered automation platforms, LLM-driven workflows, and intelligent agent-based solutions, along with authoring two published research papers in the AI/ML domain.</p>
 <p>My recent experience includes developing a React-based digital content management platform for UK Legal Deposit Libraries, building LangGraph-powered AI automation systems, fine-tuning LLaMA-based conversational AI solutions, and developing machine learning applications for real-world use cases.</p>
-<p>I would greatly appreciate the opportunity to contribute to {company} and would be grateful if you could consider my profile for any relevant Software Engineer, Machine Learning Engineer, or AI Engineer openings.</p>
+<p>I would greatly appreciate the opportunity to contribute to <b>{company}</b> and would be grateful if you could consider my profile for any relevant Software Engineer, Machine Learning Engineer, or AI Engineer openings.</p>
 <p>I am attaching my resume for your reference.</p>
 <p>Thank you for your time and consideration.</p>
+
 <p>Yours sincerely,<br>
 <b>Rachit Jain</b><br>
 &#128231; <a href="mailto:rachitjainemail@gmail.com">rachitjainemail@gmail.com</a><br>
 &#128222; +91-9650090580<br>
 <a href="https://github.com/Rachit180">GitHub</a> |
+<a href="https://www.linkedin.com/in/rachit-jain-875aa2247/">LinkedIn</a></p>"""
+    else:
+        body_paragraphs = f"""<p>My name is Rachit Jain, and I am a final-year B.Tech student in Computer Software Engineering at Delhi Technological University (DTU), graduating in 2026. I am writing to express my interest in Software Engineer / AI Engineer opportunities at {company}.</p>
+<p>I have experience across Software Development and AI through internships at MPS Limited, Path Infotech, and Gabbit Trans Systems. My work spans React, Java, Python, Machine Learning, Deep Learning, NLP, Computer Vision, Generative AI, and Agentic AI systems. I have built production-grade web applications, AI-powered automation platforms, LLM-driven workflows, and intelligent agent-based solutions, along with authoring two published research papers in the AI/ML domain.</p>
+<p>My recent experience includes developing a React-based digital content management platform for UK Legal Deposit Libraries, building LangGraph-powered AI automation systems, fine-tuning LLaMA-based conversational AI solutions, and developing machine learning applications for real-world use cases.</p>
+<p>I would greatly appreciate the opportunity to contribute to {company} and would be grateful if you could consider my profile for any relevant Software Engineer, Machine Learning Engineer, or AI Engineer openings.</p>
+<p>I am attaching my resume for your reference.</p>
+<p>Thank you for your time and consideration.</p>
 
-<a href="https://www.linkedin.com/in/rachit-jain-875aa2247/">LinkedIn</a></p>
+<p>Yours sincerely,<br>
+<b>Rachit Jain</b><br>
+&#128231; <a href="mailto:rachitjainemail@gmail.com">rachitjainemail@gmail.com</a><br>
+&#128222; +91-9650090580<br>
+<a href="https://github.com/Rachit180">GitHub</a> |
+<a href="https://www.linkedin.com/in/rachit-jain-875aa2247/">LinkedIn</a></p>"""
 
+    return f"""<html>
+<body style="font-family: Arial, sans-serif; font-size: 14px; color: #222;">
+{app_number_section}
+<p>Hello {hiring_manager},</p>
+
+{body_paragraphs}
 
 </body>
 </html>"""
@@ -158,7 +186,8 @@ def send_emails_async():
     """Send emails in background thread"""
     global sending_status
 
-    logger.info("\U0001f680 Starting email sending process...")
+    logger.info(f"\U0001f680 Starting email sending process...")
+    logger.info(f"\U0001f30d Target market: {MARKET.upper()} | Resume: {os.path.basename(RESUME_FILE_OVERRIDE)}")
     if APPLICATION_NUMBER:
         logger.info(f"\U0001f4cb Application Number for this run: {APPLICATION_NUMBER}")
     else:
@@ -177,8 +206,8 @@ def send_emails_async():
         sending_status["is_sending"] = False
         return
 
-    if not os.path.isfile(RESUME_FILE):
-        error_msg = f"Resume file not found at: {RESUME_FILE}"
+    if not os.path.isfile(RESUME_FILE_OVERRIDE):
+        error_msg = f"Resume file not found at: {RESUME_FILE_OVERRIDE}"
         logger.error(f"\u274c {error_msg}")
         sending_status["results"].append({
             "status": "error",
@@ -187,10 +216,10 @@ def send_emails_async():
         sending_status["is_sending"] = False
         return
 
-    logger.info(f"\U0001f4c4 Reading resume file: {RESUME_FILE}")
-    with open(RESUME_FILE, "rb") as f:
+    logger.info(f"\U0001f4c4 Reading resume file: {RESUME_FILE_OVERRIDE}")
+    with open(RESUME_FILE_OVERRIDE, "rb") as f:
         resume_bytes = f.read()
-    resume_filename = os.path.basename(RESUME_FILE)
+    resume_filename = os.path.basename(RESUME_FILE_OVERRIDE)
     logger.info(f"\u2705 Resume file loaded: {len(resume_bytes)} bytes")
 
     # Determine service URL for keep-alive pings
@@ -289,7 +318,9 @@ def health():
     return jsonify({
         "status": "healthy",
         "mailgun_configured": bool(MAILGUN_SMTP_LOGIN and MAILGUN_SMTP_PASSWORD),
-        "resume_file_exists": os.path.isfile(RESUME_FILE),
+        "resume_file_exists": os.path.isfile(RESUME_FILE_OVERRIDE),
+        "resume_file": os.path.basename(RESUME_FILE_OVERRIDE),
+        "target_market": MARKET.upper(),
         "recipients_count": len(recipients)
     })
 
