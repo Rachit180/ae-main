@@ -64,7 +64,7 @@ AUTO_SEND = os.environ.get("AUTO_SEND", "true").lower() == "true"
 # Set to "india" (or "1") for India recipients.
 # Set to "us" (or "2") for US recipients.
 # Controls which resume is attached and which email body is used.
-TARGET_MARKET = "India"   # <-- change to "us" when targeting US companies
+TARGET_MARKET = "us"   # <-- change to "us" when targeting US companies
 
 _market = TARGET_MARKET.strip().lower()
 if _market in ("us", "2"):
@@ -81,7 +81,7 @@ APPLICATION_NUMBER = "ab2345"
 
 # recipients mapping
 recipients = {
-    "rachitjainemail@gmail.com": ("Rachit Jain", "Google")
+    "markinsoncarter230@gmail.com": ("Rachit Jain", "Mckinsey")
 }
 
 
