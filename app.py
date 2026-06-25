@@ -77,23 +77,25 @@ else:
 # === APPLICATION NUMBER ===
 # Set this before running the script. The SAME number is sent to ALL recipients.
 # Leave empty ("") to omit the application number from the email entirely.
-APPLICATION_NUMBER = "https://jobs.lever.co/woven-by-toyota/43bdae02-424e-48f2-9648-b5aa16abcfc3/apply"
+APPLICATION_NUMBER = ""
 
 # recipients mapping
 recipients = {
-    "ron.zimmerman@woven-planet.global": ("Ron Zimmerman", "Woven by Toyota"),
-    "timothy.trahan@woven-planet.global": ("Timothy Trahan", "Woven by Toyota"),
-    "sam.loparo@woven-planet.global": ("Samuel Loparo", "Woven by Toyota"),
-    "frej.andersson@woven.toyota": ("Frej Andersson", "Woven by Toyota"),
-    "anant.singh@woven-planet.global": ("Anant Singh", "Woven by Toyota"),
-    "yuki.okuno@woven-planet.global": ("Yuki Okuno", "Woven by Toyota"),
-    "carlos.garita@woven-planet.global": ("Carlos Garita", "Woven by Toyota"),
-    "yuri.kobashigawa@woven-planet.global": ("Yuri Kobashigawa", "Woven by Toyota"),
-    "mariko.tani@woven-planet.global": ("Mariko Tani", "Woven by Toyota"),
-    "sc@woven.toyota": ("Sandra C", "Woven by Toyota"),
-    "ashley.nakaishi@woven-planet.global": ("Ashley Nakaishi", "Woven by Toyota"),
-    "julia.nakayama@woven-planet.global": ("Julia Nakayama", "Woven by Toyota"),
-    "melissa.kuwahara@woven-planet.global": ("Melissa Kuwahara", "Woven by Toyota")
+    "melynda.trudell@cvshealth.com": ("Melynda Trudell", "CVS Health"),
+    "victor.arnstein@cvscaremark.com": ("Victor Arnstein", "CVS Health"),
+    "lisa.curry@cvshealth.com": ("Lisa Curry", "CVS Health"),
+    "michael.buontempo@cvshealth.com": ("Michael Buontempo", "CVS Health"),
+    "squadritoj@aetna.com": ("Judi Squadrito", "CVS Health"),
+    "venkata.reddy@cvshealth.com": ("Venkata Reddy", "CVS Health"),
+    "michelle.macellaro@cvshealth.com": ("Michelle Macellaro", "CVS Health"),
+    "benjamin.blomquist@cvshealth.com": ("Ben Blomquist", "CVS Health"),
+    "derek.tucker@cvshealth.com": ("Derek Tucker", "CVS Health"),
+    "erik.widman@cvshealth.com": ("Erik Widman", "CVS Health"),
+    "scott.lason@cvshealth.com": ("Scott Lason", "CVS Health"),
+    "shelly.jones@cvshealth.com": ("Shelly Jones", "CVS Health"),
+    "jeffrey.cooley@cvshealth.com": ("Jeff Cooley", "CVS Health"),
+    "shagun.saboo@cvshealth.com": ("Shagun Saboo", "CVS Health"),
+    "nowakc1@aetna.com": ("Carolyn Nowak", "CVS Health")
 }
 
 
