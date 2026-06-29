@@ -81,8 +81,24 @@ APPLICATION_NUMBER = ""
 
 # recipients mapping
 recipients = {
-    "revanth@prototyping.io": ("Revanth B", "Prototyping.io"),
-    "prerit@prototyping.io": ("Prerit O", "Prototyping.io")
+    "paul.eckloff@lnssi.com": ("Paul Eckloff", "LexisNexis Risk Solutions"),
+    "barbara.blevens@lexisnexis.com": ("Barbara Blevens", "LexisNexis Risk Solutions"),
+    "stephanienhi.le@lexisnexisrisk.com": ("Stephanie Le", "LexisNexis Risk Solutions"),
+    "grayson.clarke@lexisnexisrisk.com": ("Grayson Clarke", "LexisNexis Risk Solutions"),
+    "sarah.fabius@lexisnexis.com": ("Sarah Fabius", "LexisNexis Risk Solutions"),
+    "rowena.gelder@lexisnexis.com": ("Rowena Van Gelder", "LexisNexis Risk Solutions"),
+    "candice.austin@lexisnexis.com": ("Candice Austin", "LexisNexis Risk Solutions"),
+    "huaiyue.chang@relx.com": ("Huaiyue Chang", "LexisNexis Risk Solutions"),
+    "mas.kono@lexisnexis.com": ("Mas Kono", "LexisNexis Risk Solutions"),
+    "flavio.villanustre@lexisnexis.com": ("Flavio Villanustre", "LexisNexis Risk Solutions"),
+    "mehran.ghandehari@lexisnexis.com": ("Mehran Ghandehari", "LexisNexis Risk Solutions"),
+    "ruben.dorrego@lexisnexis.com": ("Ruben Dorrego", "LexisNexis Risk Solutions"),
+    "jennifer.fuller@lexisnexisrisk.com": ("Jennifer Fuller", "LexisNexis Risk Solutions"),
+    "yun.chen@lexisnexis.com": ("Yun Chen", "LexisNexis Risk Solutions"),
+    "kate_green@lexisnexis.com": ("Kate Green", "LexisNexis Risk Solutions"),
+    "rudresh.pandey@lexisnexis.com": ("Rudresh Pandey", "LexisNexis Risk Solutions"),
+    "kevin.mccabe@lnssi.com": ("Kevin McCabe", "LexisNexis Risk Solutions"),
+    "vijay.madam@lexisnexis.com": ("Vijay Madam", "LexisNexis Risk Solutions")
 }
 
 
