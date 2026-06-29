@@ -81,21 +81,8 @@ APPLICATION_NUMBER = ""
 
 # recipients mapping
 recipients = {
-    "melynda.trudell@cvshealth.com": ("Melynda Trudell", "CVS Health"),
-    "victor.arnstein@cvscaremark.com": ("Victor Arnstein", "CVS Health"),
-    "lisa.curry@cvshealth.com": ("Lisa Curry", "CVS Health"),
-    "michael.buontempo@cvshealth.com": ("Michael Buontempo", "CVS Health"),
-    "squadritoj@aetna.com": ("Judi Squadrito", "CVS Health"),
-    "venkata.reddy@cvshealth.com": ("Venkata Reddy", "CVS Health"),
-    "michelle.macellaro@cvshealth.com": ("Michelle Macellaro", "CVS Health"),
-    "benjamin.blomquist@cvshealth.com": ("Ben Blomquist", "CVS Health"),
-    "derek.tucker@cvshealth.com": ("Derek Tucker", "CVS Health"),
-    "erik.widman@cvshealth.com": ("Erik Widman", "CVS Health"),
-    "scott.lason@cvshealth.com": ("Scott Lason", "CVS Health"),
-    "shelly.jones@cvshealth.com": ("Shelly Jones", "CVS Health"),
-    "jeffrey.cooley@cvshealth.com": ("Jeff Cooley", "CVS Health"),
-    "shagun.saboo@cvshealth.com": ("Shagun Saboo", "CVS Health"),
-    "nowakc1@aetna.com": ("Carolyn Nowak", "CVS Health")
+    "revanth@prototyping.io": ("Revanth B", "Prototyping.io"),
+    "prerit@prototyping.io": ("Prerit O", "Prototyping.io")
 }
 
 
