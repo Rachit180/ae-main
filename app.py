@@ -81,22 +81,29 @@ APPLICATION_NUMBER = ""
 
 # recipients mapping
 recipients = {
-    "stephanienhi.le@lexisnexisrisk.com": ("Stephanie Le", "LexisNexis Risk Solutions"),
-    "grayson.clarke@lexisnexisrisk.com": ("Grayson Clarke", "LexisNexis Risk Solutions"),
-    "sarah.fabius@lexisnexis.com": ("Sarah Fabius", "LexisNexis Risk Solutions"),
-    "rowena.gelder@lexisnexis.com": ("Rowena Van Gelder", "LexisNexis Risk Solutions"),
-    "candice.austin@lexisnexis.com": ("Candice Austin", "LexisNexis Risk Solutions"),
-    "huaiyue.chang@relx.com": ("Huaiyue Chang", "LexisNexis Risk Solutions"),
-    "mas.kono@lexisnexis.com": ("Mas Kono", "LexisNexis Risk Solutions"),
-    "flavio.villanustre@lexisnexis.com": ("Flavio Villanustre", "LexisNexis Risk Solutions"),
-    "mehran.ghandehari@lexisnexis.com": ("Mehran Ghandehari", "LexisNexis Risk Solutions"),
-    "ruben.dorrego@lexisnexis.com": ("Ruben Dorrego", "LexisNexis Risk Solutions"),
-    "jennifer.fuller@lexisnexisrisk.com": ("Jennifer Fuller", "LexisNexis Risk Solutions"),
-    "yun.chen@lexisnexis.com": ("Yun Chen", "LexisNexis Risk Solutions"),
-    "kate_green@lexisnexis.com": ("Kate Green", "LexisNexis Risk Solutions"),
-    "rudresh.pandey@lexisnexis.com": ("Rudresh Pandey", "LexisNexis Risk Solutions"),
-    "kevin.mccabe@lnssi.com": ("Kevin McCabe", "LexisNexis Risk Solutions"),
-    "vijay.madam@lexisnexis.com": ("Vijay Madam", "LexisNexis Risk Solutions")
+    "schatla@sscinc.com": ("Sagar Chatla", "SS&C Technologies"),
+    "geraldweisong.tay@sscinc.com": ("Gerald Tay", "SS&C Technologies"),
+    "michael.ball@sscinc.com": ("Michael Ball", "SS&C Technologies"),
+    "sghodke@sscinc.com": ("Sasmit Ghodke", "SS&C Technologies"),
+    "heidi.erler@sscinc.com": ("Heidi Erler", "SS&C Technologies"),
+    "davis.morgan@sscinc.com": ("Davis Morgan", "SS&C Technologies"),
+    "rstone@sscinc.com": ("Rob Stone", "SS&C Technologies"),
+    "oleksandr.romanko@sscinc.com": ("Oleksandr Romanko", "SS&C Technologies"),
+    "hamid.batliwala@sscinc.com": ("Hamid Batliwala", "SS&C Technologies"),
+    "melissa.galvan@sscinc.com": ("Melissa Galvan", "SS&C Technologies"),
+    "rmishra@dstsystems.com": ("Ridhi Mishra", "SS&C Technologies"),
+    "alex.knights@sscinc.com": ("Alex Knights", "SS&C Technologies"),
+    "amanda.delpidio@sscinc.com": ("Amanda Delpidio", "SS&C Technologies"),
+    "raheem.josephrobinson@sscinc.com": ("Raheem Joseph-Robinson", "SS&C Technologies"),
+    "darren.digby1@sscinc.com": ("Darren Digby", "SS&C Technologies"),
+    "charmain.cheand@sscinc.com": ("Charmain Cheand", "SS&C Technologies"),
+    "msuter@sscinc.com": ("Mark Suter", "SS&C Technologies"),
+    "eudis.anjos@sscinc.com": ("Eudis Anjos", "SS&C Technologies"),
+    "helen.oxley@sscinc.com": ("Helen Oxley", "SS&C Technologies"),
+    "aakriti.srivastava@sscinc.com": ("Aakriti Srivastava", "SS&C Technologies"),
+    "amit.kudale@sscinc.com": ("Amit Kudale", "SS&C Technologies"),
+    "gsuares@sscinc.com": ("Glenn Suares", "SS&C Technologies"),
+    "jayshree.kulkarni@sscinc.com": ("Jayshree Kulkarni", "SS&C Technologies")
 }
     
 
